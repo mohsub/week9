@@ -10,21 +10,17 @@
         
         <script type="text/javascript">
         
-            var prizes = ['A Unicorn!', 'A Hug!', 'Fresh Laundry!'];
 
-            function creatAlert(btnNum){
-               return function (){ alert(prizes[btnNum]);};
-            }
-            for (var btnNum = 0; btnNum < prizes.length; btnNum++) {
-                // for each of our buttons, when the user clicks it...
-                document.getElementById('btn-' + btnNum).onclick = creatAlert(btnN);
-                                
-                
-               
-            }
-            for ( var j = 0; j < prizes.length; j++){
-                document.getElementById('btn-' + j).onclick();
-            }
+    var prizes = ['A Unicorn!', 'A Hug!', 'Fresh Laundry!'];
+    for (let btnNum = 0; btnNum < prizes.length; btnNum++) {
+        // for each of our buttons, when the user clicks it...
+        document.getElementById('btn-' + btnNum).onclick = function() {
+            // tell her what she's won!
+            alert(prizes[btnNum]);
+        };
+    }
+
+
         </script>
 	
 

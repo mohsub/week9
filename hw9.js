@@ -1,4 +1,5 @@
 var addSix = createBase(6);
+
 function createBase(x){
     return y => y + x;
 }
@@ -13,19 +14,15 @@ fetch(url)
 return response.json()             
 })
 .then(users => {
-    console.log(users)
+    users.forEach ((user,i) => {
+        const url1 = 'https://jsonplaceholder.typicode.com/users/${user.id}/todos';
+        fetch(url1)
+        .then(data => data.json())
+        .then(userId => {
+            user.userId = userId
+        })
+    });
+    return users;
 })
-//3
-function creatAlert(btnNum){
-    return function (){ alert(prizes[btnNum]);};
- }
- for (var btnNum = 0; btnNum < prizes.length; btnNum++) {
-     // for each of our buttons, when the user clicks it...
-     document.getElementById('btn-' + btnNum).onclick = creatAlert(btnNum)
-                     
-     
-    
- }
- for ( var j = 0; j < prizes.length; j++){
-     document.getElementById('btn-' + j).onclick();
- }
+.then(users => console.log(users));
+
